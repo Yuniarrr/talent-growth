@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { createContact, getAllContacts, getContact, editContact } from "./controller/index.js";
+import { createContact, getAllContacts, getContact, editContact, deleteContact } from "./controller/index.js";
 
 const router = express.Router();
 
@@ -32,7 +32,7 @@ router.patch('/contact/:id', (req, res) => {
 
 // delete
 router.delete('/contact/:id', (req, res) => {
-    res.send("delete by id");
+    deleteContact(req, res);
 });
 
 export default router;
