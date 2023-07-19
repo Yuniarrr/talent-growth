@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import { createContact } from "./controller/index.js";
 
 const router = express.Router();
 
@@ -11,7 +12,7 @@ router.get("/", (req, res) => {
 
 // create contact
 router.post('/contact', (req, res) => {
-    console.log("create");
+    createContact(req, res);
 });
 
 // get all
