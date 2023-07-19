@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mongodb-dev:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user0987
+      - MONGO_INITDB_ROOT_PASSWORD=pass0987
+    ports:
+      - 27017:27017
