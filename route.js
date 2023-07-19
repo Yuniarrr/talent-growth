@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { createContact, getAllContacts } from "./controller/index.js";
+import { createContact, getAllContacts, getContact } from "./controller/index.js";
 
 const router = express.Router();
 
@@ -22,7 +22,7 @@ router.get('/contacts', (req, res) => {
 
 // get one
 router.get('/contact/:id', (req, res) => {
-    res.send("get by id");
+    getContact(req, res);
 });
 
 // update
