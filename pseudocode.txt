@@ -1,0 +1,149 @@
+function createAccount(full_name, email, password, confirm_password) {
+    create a new user account
+
+    try
+        if (!isEmail(email)) {
+            return "input a valid email"
+        }
+
+        if (!full_name || !email || !password || !confirm_password) {
+            return "field cannot be empty"
+        }
+
+        if (password !== confirm_password) {
+            return "passwords are not the same"
+        }
+
+        hash = hashPassword(password)
+
+        save new account(full_name, email, hash)
+        return 201
+
+    if error
+        print error
+        return 500
+}
+
+function hashPassword(password) {
+    // hashing logic here
+    return hashed_password
+}
+
+function isEmail(email) {
+    // cek valid email
+    if email is valid
+        return true
+    else
+        return false
+}
+
+function logIn(email, password) {
+    find user by email and check hashed passwords match with inputted ones. If yes then login successful
+    otherwise throw an exception or something like that to indicate failure of authentication
+
+    try
+        check email exist in database of not
+        exits_email = findEmail(email)
+
+        if(!email)
+            return 404
+
+        compare hashes from db vs entered one
+        hash_password = hashPassword(password)
+
+        if (db_password !== hash_password)
+            return 401
+
+        return access, 200
+
+    if error
+        print error
+        return 500
+}
+
+function linkedThirdParty(email, password) {
+    try
+        redirect to authentication page from linkedin
+
+        user = get authentication from linkedin(email, password)
+
+        return 200, user, access
+
+    if error
+        print error
+        return 500
+}
+
+function googleThirdParty() {
+    try
+        redirect to authentication page from goole
+
+        user = get authentication from google
+
+        return 200, user, access
+
+    if error
+        print error
+        return 500
+}
+
+function logOut() {
+    remove access for current logged in user
+
+    try
+        delete access
+
+        return 200
+
+    if error
+        print error
+        return 500
+}
+
+function welcome() {
+    try
+        user = check access
+
+        if(!user)
+            return 401
+
+        jobs = get all jobs available in database
+
+        return jobs
+
+    if error
+        print error
+        return 500
+}
+
+function saveData() {
+    save all data into database
+    
+    try
+        input_to_save = get all input
+        
+        save to database
+        input_to_save.save()
+
+        return 200
+    
+    if error
+        print error
+        return 500
+}
+
+CASE CHANGE
+    CREATE ACCOUNT
+        createAccount(full_name, email, password, confirm_password)
+    LOGIN
+        logIn(email, password)
+    LINKEDIN
+        linkedThirdParty(email, password)
+    GOOGLE
+        googleThirdParty()
+    LOGOUT
+        logOut()
+    WELCOME
+        welcome()
+    SAVE DATA
+        saveData()
